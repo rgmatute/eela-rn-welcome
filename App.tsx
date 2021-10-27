@@ -2,20 +2,29 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { Button, StyleSheet, Text, TextInput, TouchableHighlight, View } from 'react-native';
 import { RNButton } from './src/Components/RNButton';
+import { RNTextInput } from './src/Components/RNTextInput';
 
 export default function App() {
+
+  const [input, setInput] = React.useState(String);
+  const [password, setPassword] = React.useState(String);
+
   return (
     <View style={styles.container}>
-      <Text style={{color: 'black', fontSize: 50}}>Hola</Text>
+      <Text style={{color: 'black', fontSize: 50, marginBottom: 50}}>Login</Text>
 
-      <RNButton title="Mostrar A" color='blue'></RNButton>
-      <RNButton title="Mostrar B" color="black"></RNButton>
-      <RNButton title="Mostrar C" color="gray"></RNButton>
-      <RNButton title="Mostrar D" color="green"></RNButton>
+      <RNTextInput 
+        value={input} 
+        onChangeText={setInput}
+        placeholder="Usuario" />
 
-      <View style={{width: '100%'}}>
-        <TextInput style={{backgroundColor: 'red', fontSize: 20}}></TextInput>
-      </View>
+      <RNTextInput 
+        secureTextEntry={true}
+        value={password} 
+        onChangeText={setPassword} 
+        placeholder="Contraseña" />
+
+      <RNButton fontSize={30} title="Iniciar Sesion" color='blue' marginTop={10}></RNButton>
 
     </View>
   );
