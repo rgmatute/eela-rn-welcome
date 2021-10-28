@@ -7,7 +7,8 @@ type RNButtonProps = {
     color?: string,
     marginBottom?: number,
     marginTop?: number,
-    fontSize?: number
+    fontSize?: number,
+    onPress: () => void
 }
 
 export const RNButton = (props: RNButtonProps) => {
@@ -27,19 +28,13 @@ export const RNButton = (props: RNButtonProps) => {
     },[color]);
 
     return (
-        <TouchableHighlight onPress={onClick} style={{ ...style.container, backgroundColor: color, marginTop: props.marginTop, marginBottom: props.marginBottom }}>
+        <TouchableHighlight onPress={props.onPress} style={{ ...style.container, backgroundColor: color, marginTop: props.marginTop, marginBottom: props.marginBottom }}>
             <Text style={{fontSize: props.fontSize, color: 'white', textAlign: 'center'}}>
                 {props.title}
             </Text>
         </TouchableHighlight>
     );
 }
-
-
-const onClick = () => {
-    console.log("Si funciona mi componente personalizado..")
-}
-
 
 const style = StyleSheet.create({
     container: { 

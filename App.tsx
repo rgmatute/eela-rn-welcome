@@ -1,46 +1,32 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { Button, StyleSheet, Text, TextInput, TouchableHighlight, View } from 'react-native';
+import { Button, Route, StyleSheet, Text, TextInput, TouchableHighlight, View } from 'react-native';
 import { RNButton } from './src/Components/RNButton';
 import { RNTextInput } from './src/Components/RNTextInput';
+import { Context } from './src/Context';
+import { LoginRoute } from './src/Routes';
+import { dispatch } from './src/Routes/routeDispatch';
+import { Login } from './src/Views/Login';
 
 export default function App() {
 
-  const [input, setInput] = React.useState(String);
-  const [password, setPassword] = React.useState(String);
+  const [route, setRoute] = React.useState<Route>(new LoginRoute());
+
+  const context = new Context(setRoute);
 
   return (
     <View style={styles.container}>
-      <Text style={{color: 'black', fontSize: 50, marginBottom: 50}}>Login</Text>
-
-      <RNTextInput 
-        value={input} 
-        onChangeText={setInput}
-        placeholder="Usuario" />
-
-      <RNTextInput 
-        secureTextEntry={true}
-        value={password} 
-        onChangeText={setPassword} 
-        placeholder="Contraseña" />
-
-      <RNButton fontSize={30} title="Iniciar Sesion" color='blue' marginTop={10}></RNButton>
-
+      
+      { dispatch(route, context) }
+      
     </View>
   );
 }
 
-const onClick = ()=>{
-  console.log("SI funciona el click");
-};
-
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    // backgroundColor: 'red',
-    alignItems: 'center',
-    justifyContent: 'center',
+    height: '100%'
   },
 });
 
