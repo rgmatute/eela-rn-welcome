@@ -29,8 +29,6 @@ export const RNTextInput = (props: RNTextInputProps) => {
                 { isPassword &&  <TextInput secureTextEntry={!visible} placeholder={props.placeholder} value={props.value} onChangeText={props.onChangeText} style={styles.myInput}></TextInput> }
                 { !isPassword && <TextInput placeholder={props.placeholder} value={props.value} onChangeText={props.onChangeText} style={styles.myInput}></TextInput>}
 
-
-
                 { props.value != undefined && props.value?.length > 0 && isPassword && !visible && 
                     <TouchableHighlight underlayColor={'white'} onPress={ () => oculta(true)}>
                         <Image source={require('../../images/eye-2.png')}
@@ -55,9 +53,11 @@ export const RNTextInput = (props: RNTextInputProps) => {
 const styles = StyleSheet.create({
     myInput: {
         flex: 1,
+        width: '100%',
         backgroundColor: 'white', 
-        fontSize: 40,
+        // fontSize: 40,
         color: 'black', 
-        padding: 10
+        padding: 10,
+        borderRadius: 3
     }
 });

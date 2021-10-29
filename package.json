@@ -4,6 +4,7 @@
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "web": "expo start --web",
+    "build-android-apk": "react-native bundle --platform android --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --dev false --reset-cache && cd android && gradlew assembleRelease && gradlew bundleRelease",
     "eject": "expo eject"
   },
   "dependencies": {

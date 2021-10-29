@@ -28,7 +28,7 @@ export const RNButton = (props: RNButtonProps) => {
     },[color]);
 
     return (
-        <TouchableHighlight onPress={props.onPress} style={{ ...style.container, backgroundColor: color, marginTop: props.marginTop, marginBottom: props.marginBottom }}>
+        <TouchableHighlight underlayColor={'#0B5345'} onPress={props.onPress} style={{ ...style.container, backgroundColor: color, marginTop: props.marginTop, marginBottom: props.marginBottom }}>
             <Text style={{fontSize: props.fontSize, color: 'white', textAlign: 'center'}}>
                 {props.title}
             </Text>
